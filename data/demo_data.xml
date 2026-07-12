@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="demo_category_it_equipment" model="asset_flow.category">
+            <field name="name">IT Equipment</field>
+            <field name="warranty_period">24</field>
+        </record>
+
+        <record id="demo_category_facilities" model="asset_flow.category">
+            <field name="name">Facilities / Meeting Spaces</field>
+            <field name="warranty_period">0</field>
+        </record>
+
+        <record id="demo_asset_laptop" model="asset_flow.asset">
+            <field name="name">Dell Latitude 5420</field>
+            <field name="category_id" ref="demo_category_it_equipment"/>
+            <field name="serial_number">DL5420-88213</field>
+            <field name="acquisition_cost">72000.0</field>
+            <field name="condition">good</field>
+            <field name="is_bookable">False</field>
+            <field name="state">available</field>
+        </record>
+
+        <record id="demo_asset_projector" model="asset_flow.asset">
+            <field name="name">Epson EB-X600 Projector</field>
+            <field name="category_id" ref="demo_category_it_equipment"/>
+            <field name="serial_number">EPX600-44190</field>
+            <field name="acquisition_cost">38500.0</field>
+            <field name="condition">good</field>
+            <field name="is_bookable">True</field>
+            <field name="state">available</field>
+        </record>
+
+        <record id="demo_asset_conference_room" model="asset_flow.asset">
+            <field name="name">Conference Room A</field>
+            <field name="category_id" ref="demo_category_facilities"/>
+            <field name="condition">new</field>
+            <field name="is_bookable">True</field>
+            <field name="state">available</field>
+        </record>
+
+        <record id="demo_booking_conference_room" model="asset_flow.booking">
+            <field name="asset_id" ref="demo_asset_conference_room"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="start_time">2026-07-15 10:00:00</field>
+            <field name="end_time">2026-07-15 11:00:00</field>
+            <field name="state">upcoming</field>
+        </record>
+
+    </data>
+</odoo>
