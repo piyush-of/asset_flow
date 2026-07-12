@@ -3,3 +3,4 @@ access_asset_flow_category_user,asset_flow.category.user,model_asset_flow_catego
 access_asset_flow_asset_user,asset_flow.asset.user,model_asset_flow_asset,base.group_user,1,1,1,1
 access_asset_flow_allocation,asset_flow.allocation,model_asset_flow_allocation,base.group_user,1,1,1,1
 access_asset_flow_booking,asset_flow.booking,model_asset_flow_booking,base.group_user,1,1,1,1
+access_asset_flow_maintenance,asset_flow.maintenance,model_asset_flow_maintenance,base.group_user,1,1,1,1

@@ -12,6 +12,7 @@
         'data/ir_sequence_data.xml',
         # views
         'views/asset_views.xml',
+        'views/maintenance_views.xml',
         'views/menus.xml'
 
     ],

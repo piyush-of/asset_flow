@@ -39,5 +39,18 @@
               parent="menu_asset_flow_configuration"
               action="action_asset_flow_category"
               sequence="10"/>
+    <record id="action_asset_flow_maintenance" model="ir.actions.act_window">
+        <field name="name">Maintenance</field>
+        <field name="res_model">asset_flow.maintenance</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    
+    <menuitem id="menu_asset_flow_maintenance" 
+          name="Maintenance" 
+          parent="menu_asset_flow_root" 
+          action="action_asset_flow_maintenance" 
+          sequence="30"/>
+
+
 
 </odoo>
