@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_asset_flow_allocation_tree" model="ir.ui.view">
+        <field name="name">asset_flow.allocation.tree</field>
+        <field name="model">asset_flow.allocation</field>
+        <field name="arch" type="xml">
+            <tree string="Asset Allocations">
+                <field name="asset_id"/>
+                <field name="employee_id"/>
+                <field name="expected_return_date"/>
+                <field name="state" widget="badge" decoration-info="state == 'requested'" decoration-success="state == 'approved'" decoration-muted="state == 'returned'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_asset_flow_allocation_form" model="ir.ui.view">
+        <field name="name">asset_flow.allocation.form</field>
+        <field name="model">asset_flow.allocation</field>
+        <field name="arch" type="xml">
+            <form string="Asset Allocation">
+                <header>
+                    <button name="action_approve" string="Approve" type="object" class="oe_highlight" invisible="state != 'draft' and state != 'requested'"/>
+                    <button name="action_return" string="Return Asset" type="object" invisible="state != 'approved'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,requested,approved,returned"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="asset_id"/>
+                            <field name="employee_id"/>
+                        </group>
+                        <group>
+                            <field name="expected_return_date"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_asset_flow_allocation" model="ir.actions.act_window">
+        <field name="name">Allocations</field>
+        <field name="res_model">asset_flow.allocation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -17,6 +17,18 @@
               action="action_asset_flow_asset"
               sequence="10"/>
 
+    <menuitem id="menu_asset_flow_allocation_all"
+              name="Allocations"
+              parent="menu_asset_flow_assets"
+              action="action_asset_flow_allocation"
+              sequence="20"/>
+
+    <menuitem id="menu_asset_flow_booking_all"
+              name="Bookings"
+              parent="menu_asset_flow_assets"
+              action="action_asset_flow_booking"
+              sequence="30"/>
+
     <menuitem id="menu_asset_flow_configuration"
               name="Configuration"
               parent="menu_asset_flow_root"
