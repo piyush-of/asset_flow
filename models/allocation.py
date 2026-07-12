@@ -39,7 +39,7 @@ class AssetAllocation(models.Model):
         for record in self:
             if record.state != 'approved':
                 raise ValidationError("Only approved allocations can be returned.")
-        record.write({'state': 'returned'})
-        record.asset_id.write({'state': 'available', 'current_holder_id': False})
+            record.write({'state': 'returned'})
+            record.asset_id.write({'state': 'available', 'current_holder_id': False})
             
         
