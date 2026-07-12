@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ==================== Category Views ==================== -->
+
+    <record id="view_asset_flow_category_tree" model="ir.ui.view">
+        <field name="name">asset_flow.category.tree</field>
+        <field name="model">asset_flow.category</field>
+        <field name="arch" type="xml">
+            <tree string="Asset Categories">
+                <field name="name"/>
+                <field name="warranty_period"/>
+                <field name="active" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_asset_flow_category_form" model="ir.ui.view">
+        <field name="name">asset_flow.category.form</field>
+        <field name="model">asset_flow.category</field>
+        <field name="arch" type="xml">
+            <form string="Asset Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="warranty_period"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_asset_flow_category" model="ir.actions.act_window">
+        <field name="name">Categories</field>
+        <field name="res_model">asset_flow.category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first asset category
+            </p>
+        </field>
+    </record>
+
+    <!-- ==================== Asset Views ==================== -->
+
+    <record id="view_asset_flow_asset_tree" model="ir.ui.view">
+        <field name="name">asset_flow.asset.tree</field>
+        <field name="model">asset_flow.asset</field>
+        <field name="arch" type="xml">
+            <tree string="Assets" decoration-muted="state in ('retired', 'disposed')">
+                <field name="asset_tag"/>
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="serial_number" optional="hide"/>
+                <field name="condition"/>
+                <field name="state"/>
+                <field name="current_holder_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_asset_flow_asset_form" model="ir.ui.view">
+        <field name="name">asset_flow.asset.form</field>
+        <field name="model">asset_flow.asset</field>
+        <field name="arch" type="xml">
+            <form string="Asset">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="available,allocated,retired"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Dell Latitude 5420"/>
+                        </h1>
+                        <h3>
+                            <field name="asset_tag"/>
+                        </h3>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="category_id"/>
+                            <field name="serial_number"/>
+                            <field name="condition"/>
+                            <field name="is_bookable"/>
+                        </group>
+                        <group>
+                            <field name="acquisition_date"/>
+                            <field name="acquisition_cost"/>
+                            <field name="current_holder_id"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_asset_flow_asset_search" model="ir.ui.view">
+        <field name="name">asset_flow.asset.search</field>
+        <field name="model">asset_flow.asset</field>
+        <field name="arch" type="xml">
+            <search string="Search Assets">
+                <field name="name"/>
+                <field name="asset_tag"/>
+                <field name="serial_number"/>
+                <field name="category_id"/>
+                <filter string="Available" name="filter_available" domain="[('state', '=', 'available')]"/>
+                <filter string="Allocated" name="filter_allocated" domain="[('state', '=', 'allocated')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Category" name="group_by_category" context="{'group_by': 'category_id'}"/>
+                    <filter string="Status" name="group_by_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_asset_flow_asset" model="ir.actions.act_window">
+        <field name="name">Assets</field>
+        <field name="res_model">asset_flow.asset</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_asset_flow_asset_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Register your first asset
+            </p>
+        </field>
+    </record>
+
+</odoo>

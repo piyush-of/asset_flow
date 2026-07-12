@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_asset_flow_root"
+              name="AssetFlow"
+              sequence="10"
+              web_icon="asset_flow,static/description/icon.png"/>
+
+    <menuitem id="menu_asset_flow_assets"
+              name="Assets"
+              parent="menu_asset_flow_root"
+              sequence="10"/>
+
+    <menuitem id="menu_asset_flow_asset_all"
+              name="All Assets"
+              parent="menu_asset_flow_assets"
+              action="action_asset_flow_asset"
+              sequence="10"/>
+
+    <menuitem id="menu_asset_flow_configuration"
+              name="Configuration"
+              parent="menu_asset_flow_root"
+              sequence="100"/>
+
+    <menuitem id="menu_asset_flow_category"
+              name="Categories"
+              parent="menu_asset_flow_configuration"
+              action="action_asset_flow_category"
+              sequence="10"/>
+
+</odoo>

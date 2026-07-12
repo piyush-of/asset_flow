@@ -6,7 +6,14 @@
     'sequence': 1,
     'depends': ['base', 'mail'],
     'data': [
-        'data/ir_sequence_data.xml',  # Loaded first so sequence is ready
+        # security
+        'security/ir.model.access.csv',
+        # data
+        'data/ir_sequence_data.xml',
+        # views
+        'views/asset_views.xml',
+        'views/menus.xml'
+
     ],
     'installable': True,
     'application': True,
