@@ -37,9 +37,9 @@ class AssetAllocation(models.Model):
 
     def action_return(self):
         for record in self:
-            record.write({'state': 'returned'})
-            # Free up the asset automatically
-            record.asset_id.write({
-                'state': 'available',
-                'current_holder_id': False
-            })
+            if record.state != 'approved':
+                raise ValidationError("Only approved allocations can be returned.")
+        record.write({'state': 'returned'})
+        record.asset_id.write({'state': 'available', 'current_holder_id': False})
+            
+        

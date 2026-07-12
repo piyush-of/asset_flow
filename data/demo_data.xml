@@ -43,8 +43,8 @@
         <record id="demo_booking_conference_room" model="asset_flow.booking">
             <field name="asset_id" ref="demo_asset_conference_room"/>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="start_time">2026-07-15 10:00:00</field>
-            <field name="end_time">2026-07-15 11:00:00</field>
+            <field name="start_time" eval="(DateTime.now() + relativedelta(days=2, hour=10, minute=0, second=0)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="end_time" eval="(DateTime.now() + relativedelta(days=2, hour=11, minute=0, second=0)).strftime('%Y-%m-%d %H:%M:%S')"/>   
             <field name="state">upcoming</field>
         </record>
 
