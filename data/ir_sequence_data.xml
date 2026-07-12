@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_asset_flow_asset" model="ir.sequence">
+            <field name="name">AssetFlow Asset</field>
+            <field name="code">asset_flow.asset</field>
+            <field name="prefix">AF-</field>
+            <field name="padding">4</field>
+            <field name="number_increment">1</field>
+        </record>
+    </data>
+</odoo>
